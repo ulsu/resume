@@ -1,36 +1,46 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
-<head>
-{% block css %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL}}css/screen.css" media="screen" />
+{% extends "base.html" %}
+
+{% block faculties %}
+    <table width="270" cellspacing="0" cellpadding="0" border="0" height="" id="mainmenu">
+        <tbody>
+        <tr>
+            <td>
+                <ul>
+                    {% for i in institutes %}
+                    <li>
+                        <a href="#">
+                            {{ i.name }}
+                        </a>
+                        <ul>
+                            {% for f in i.faculties.all %}
+                            <li>
+                                <a href="#">{{ f.name }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p style=" color: #865A57; font-weight: 900;">Поиск по ФИО</p>
+                <form onsubmit="search(); return false;"><input type="text" name="query" id="search_query"><input type="button" value="Найти" name="search_it" onclick="search();"></form>
+            </td>
+        </tr>
+        <tr>
+            <td height="100%"><img width="1" height="1" alt="" src="images/0.gif"></td>
+        </tr></tbody></table>
 {% endblock %}
-{% block js %}{% endblock %}
-</head>
 
-<body>
-<div class="main_block">
-    <div id="header">
-        <div id="menu_t">
-            <ul>
-                <li class="m1"><a href=""><div id="stt"></div></a></li>
-                <li class="m2"><a href=""><div id="abt"></div></a></li>
-                <li class="m3"><a href=""><div id="cntt"></div></a></li>
-            </ul>
+{% block information %}
+    <div>
+        <div style="float: left; margin-right: 10px; width: 67%;">
+            С 1997 года издается ежегодный персональный справочник молодых специалистов - выпускников УлГУ. С 2012 года выходит электронное издание сборника, которое составлено на основе резюме выпускников Ульяновского госуниверситета. Основная задача, которую ставят перед собой авторы, - помочь молодым специалистам найти оптимальное применение своим силам и знаниям, а предприятиям и организациям - получить высококвалифицированные кадры, потребность в которых увеличивается с каждым годом. Сборник резюме выпускников УлГУ значительно расширит возможности трудоустройства и позволит заинтересовать еще больше работодателей в молодых специалистах. За дополнительной информацией можно обратиться в Центр содействия трудоустройству выпускников УлГУ (г. Ульяновск, ул. Льва Толстого, 42; тел.: 41-20-76).
+        </div>
+        <div style="float:left;">
+            <img src="{{ STATIC_URL }}img/cover-grad-1pa.jpg" style="border:1px solid #7f7f7f;">
         </div>
     </div>
-
-    <div class="content">
-        <div class="faculties">{% block faculties %}{% endblock %}</div>
-        <div class="info">{% block information %}{% endblock %}
-        </div>
-
-    </div>
-
-    <div class="footer">
-        <a target="_blank" href="http://www.ulsu.ru"><img width="111" height="111" alt="" src="{{ STATIC_URL }}img/logo.png"></a>
-    </div>
-    <div class="clear"></div>
-</div>
-</body>
-
-</html>
+{% endblock %}

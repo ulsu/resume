@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post" action="/send/" id="forms-form" enctype="multipart/form-data" class="MultiFile-intercepted">
+    <p style="color: #5F6264; font: 12px 'segoe',sans-serif;"><span style="color:red;">Внимание!</span>
+        Все поля обязательны для заполнения.</p>
+    <div class="left-col">
+        <h3>Данные об исполнителе</h3>
+
+        <div class="row">
+            {{ account.last_name }}		<span class="error_text"></span>
+        </div>
+        <div class="row">
+            {{ account.first_name }}		<span class="error_text"></span>
+        </div>
+        <div class="row">
+            {{ account.middle_name }}		<span class="error_text"></span>
+        </div>
+        <div class="row">
+            {{ account.photo }}		<span class="error_text"></span>
+        </div>
+        <p>Загрузите своё фото 200x100</p>
+        <div class="row">
+            {{ account.phone }}		<span class="error_text"></span>
+        </div>
+        <div class="row">
+            {{ account.mail }}		<span class="error_text"></span>
+        </div>
+
+        <h4>Место учебы</h4>
+
+        <div class="row">
+            {{ account.address }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.sait }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.scope }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.date }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.education }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.faculty }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.speciality }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.date_of_receipt }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.expiration_date }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.other_information }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.additional_education }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.experience }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.skills }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.honor }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.languages }}		<span class="error_text"></span>
+        </div>
+
+        <div class="row">
+            {{ account.quality }}		<span class="error_text"></span>
+        </div>
+
+    </div>
+    {% csrf_token %}
+    <button type="submit" formaction="/send/">Отправить</button>
+    </form>
+
+{% endblock %}
+
+

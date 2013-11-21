@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-
-from local_settings import DATABASES
+import os
+from local_settings import DATABASES, PROJECT_ROOT
 from private_settings import SECRET_KEY
 
 DEBUG = True
@@ -20,11 +20,11 @@ ALLOWED_HOSTS = []
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Moscow'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-ru'
 
 SITE_ID = 1
 
@@ -52,7 +52,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = 'C:/Django/projects/resume/staticfiles'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, '/static/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -63,7 +63,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    'C:/Django/projects/resume/static',
+    'static',
 )
 
 # List of finder classes that know how to find static files in
@@ -96,7 +96,6 @@ ROOT_URLCONF = 'resume.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'resume.wsgi.application'
 
-import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
 INSTALLED_APPS = (
@@ -108,7 +107,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'main',
+    'accounts',
 )
+
+AUTH_USER_MODEL = 'accounts.User'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

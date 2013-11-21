@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    {% block css %}
+        {% comment %}<link rel="stylesheet" type="text/css" href="{{ STATIC_URL}}css/screen.css" media="screen" />{% endcomment %}
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL}}css/bootstrap.min.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL}}css/style.css" media="screen" />
+        <script src="{{ STATIC_URL }}js/jquery.js" type="text/javascript"></script>
+        <style type="text/css">
+
+            /* Sticky footer styles
+             -------------------------------------------------- */
+            html,
+                    body {
+                height: 100%;
+                /* The html and body elements cannot have any padding or margin. */
+            }
+            /* Wrapper for page content to push down footer */
+            #wrap {
+                min-height: 100%;
+                height: auto !important;
+                height: 100%;
+                /* Negative indent footer by it's height */
+                margin: 0 auto -76px;
+            }
+            /* Set the fixed height of the footer here */
+            #push,
+            #footer {
+                height: 76px;
+            }
+            #footer {
+                background-color: #64b6e2;
+            }
+            /* Lastly, apply responsive CSS fixes as necessary */
+            @media (max-width: 767px) {
+            #footer {
+                    margin-left: -20px;
+                    margin-right: -20px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+            }
+            /* Custom page CSS
+             -------------------------------------------------- */
+            /* Not required for template or sticky footer method. */
+            .container {
+                width: auto;
+                max-width: 1250px;
+            }
+            .container .credit {
+                margin: 28px auto;
+                color: #fff;
+            }
+        </style>
+    {% endblock %}
+    {% block js %}{% endblock %}
+</head>
+
+<body>
+<div id="wrap">
+    <div class="container">
+        <div id="header">
+            <div id="menu_t">
+                <ul>
+                    <li class="m1"><a href=""><div id="stt"></div></a></li>
+                    <li class="m2"><a href=""><div id="abt"></div></a></li>
+                    <li class="m3"><a href=""><div id="cntt"></div></a></li>
+                    {% if user.is_authenticated %}
+                        <li style="float:right;margin-right: -240px;">
+                            <a href="/accounts/personal/">
+                                {{ user.username }}
+                            </a>
+                            <a href="/accounts/logout/"><div class="logout">Выйти</a></a>
+                            {% else %}
+                        <li style="float:right;margin-right: -240px;"><a href="/accounts/login/" stle="float:right;">Войти</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            {% block content %}
+                <div class="faculties">{% block faculties %}{% endblock %}</div>
+                <div class="info">{% block information %}{% endblock %}</div>
+            {% endblock %}
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+    <div id="push"></div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="credit">Copyright © Ульяновский государственный университет, 2011-2013</p>
+    </div>
+</div>
+</body>
+
+</html>

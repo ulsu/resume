@@ -279,3 +279,7 @@ img.b1 {
 #cntt:hover {
     background: url("../img/contacts_svet.png") no-repeat !important;
     }
+
+.row {
+    margin-bottom: 10px;
+}
