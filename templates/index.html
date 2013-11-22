@@ -1,16 +1,12 @@
 {% extends "base.html" %}
 
 {% block faculties %}
-    <table width="270" cellspacing="0" cellpadding="0" border="0" height="" id="mainmenu">
-        <tbody>
-        <tr>
-            <td>
                 <ul>
                     {% for i in institutes %}
-                    <li>
                         <a href="#">
                             {{ i.name }}
                         </a>
+                        <li>
                         <ul>
                             {% for f in i.faculties.all %}
                             <li>
@@ -21,17 +17,10 @@
                     </li>
                     {% endfor %}
                 </ul>
-            </td>
-        </tr>
-        <tr>
-            <td>
+
                 <p style=" color: #865A57; font-weight: 900;">Поиск по ФИО</p>
                 <form onsubmit="search(); return false;"><input type="text" name="query" id="search_query"><input type="button" value="Найти" name="search_it" onclick="search();"></form>
-            </td>
-        </tr>
-        <tr>
-            <td height="100%"><img width="1" height="1" alt="" src="images/0.gif"></td>
-        </tr></tbody></table>
+  <img width="1" height="1" alt="" src="images/0.gif">
 {% endblock %}
 
 {% block information %}

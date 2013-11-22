@@ -73,3 +73,7 @@ class Education(models.Model):
     class Meta:
         verbose_name = 'Уровень образования'
         verbose_name_plural = 'Уровни образования'
+
+class Page(models.Model):
+    name = models.CharField(max_length=255, verbose_name='Название страницы')
+    content = models.TextField(verbose_name='Контент страницы', blank=True, null=True)
