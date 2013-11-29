@@ -31,6 +31,6 @@ class EducationAdmin(admin.ModelAdmin):
 admin.site.register(Education, EducationAdmin)
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('id','name',)
 
 admin.site.register(Page, PageAdmin)

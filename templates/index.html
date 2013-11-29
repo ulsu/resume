@@ -1,7 +1,31 @@
 {% extends "base.html" %}
 
+{% block menu %}
+    <ul class="nav nav-tabs">
+        {% if a.name == "main" %}
+            <li class="active"><a href="/">Главная</a></li>
+            <li><a href="/about/">Об УлГУ</a></li>
+            <li><a href="/contacts/">Контакты</a></li>
+        {% elif a.name == "about" %}
+            <li><a href="/">Главная</a></li>
+            <li class="active"><a href="/about/">Об УлГУ</a></li>
+            <li><a href="/contacts/">Контакты</a></li>
+        {% elif a.name == "contacts"%}
+            <li><a href="/">Главная</a></li>
+            <li><a href="/about/">Об УлГУ</a></li>
+            <li class="active"><a href="/contacts/">Контакты</a></li>
+        {% else %}
+            <li><a href="/">Главная</a></li>
+            <li><a href="/about/">Об УлГУ</a></li>
+            <li><a href="/contacts/">Контакты</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
+
+
 {% block faculties %}
                 <ul>
+                    <a href="/appeal/">Обращение к выпускникам</a>
                     {% for i in institutes %}
                         <a href="#">
                             {{ i.name }}
@@ -10,26 +34,23 @@
                         <ul>
                             {% for f in i.faculties.all %}
                             <li>
-                                <a href="#">{{ f.name }}</a>
+                                <a href="/faculty/{{ f.id }}">{{ f.name }}</a>
                             </li>
                             {% endfor %}
                         </ul>
                     </li>
                     {% endfor %}
+                    {% for f in faculties %}
+                        <a href="/faculty/{{ f.id }}">{{ f.name }}</a>
+                    {% endfor %}
                 </ul>
+
 
                 <p style=" color: #865A57; font-weight: 900;">Поиск по ФИО</p>
                 <form onsubmit="search(); return false;"><input type="text" name="query" id="search_query"><input type="button" value="Найти" name="search_it" onclick="search();"></form>
-  <img width="1" height="1" alt="" src="images/0.gif">
+  <img width="1" height="1" alt="" src="/images/0.gif">
 {% endblock %}
 
 {% block information %}
-    <div>
-        <div style="float: left; margin-right: 10px; width: 67%;">
-            С 1997 года издается ежегодный персональный справочник молодых специалистов - выпускников УлГУ. С 2012 года выходит электронное издание сборника, которое составлено на основе резюме выпускников Ульяновского госуниверситета. Основная задача, которую ставят перед собой авторы, - помочь молодым специалистам найти оптимальное применение своим силам и знаниям, а предприятиям и организациям - получить высококвалифицированные кадры, потребность в которых увеличивается с каждым годом. Сборник резюме выпускников УлГУ значительно расширит возможности трудоустройства и позволит заинтересовать еще больше работодателей в молодых специалистах. За дополнительной информацией можно обратиться в Центр содействия трудоустройству выпускников УлГУ (г. Ульяновск, ул. Льва Толстого, 42; тел.: 41-20-76).
-        </div>
-        <div style="float:left;">
-            <img src="{{ STATIC_URL }}img/cover-grad-1pa.jpg" style="border:1px solid #7f7f7f;">
-        </div>
-    </div>
+    {{ a.content|safe }}
 {% endblock %}

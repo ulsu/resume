@@ -6,11 +6,16 @@ from models import *
 from forms import *
 from django.contrib.auth.decorators import login_required
 
-
 def hello(request):
+    page = Page.objects.get(name='main')
     t = loader.get_template("index.html")
-    institutes = Institute.objects.all()
-    c = RequestContext(request, {'institutes': institutes})
+    c = RequestContext(request, {'a': page})
+    return HttpResponse(t.render(c))
+
+def pages(request, str):
+    page = Page.objects.get(name=str)
+    t = loader.get_template("index.html")
+    c = RequestContext(request, {'a': page})
     return HttpResponse(t.render(c))
 
 
@@ -51,3 +56,9 @@ def save(request):
             account = account_form.save()
 
     return redirect('/')
+
+def specialty(request, str):
+    spec = Speciality.objects.filter(faculty=str)
+    t = loader.get_template("specialty.html")
+    c = RequestContext(request, { 'speciality': spec, })
+    return HttpResponse(t.render(c))

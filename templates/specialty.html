@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+
+{% block information %}
+<div class="account-list">
+    <ul>
+        {% for s in speciality %}
+            <li>
+                {{ s.name }}
+                <ol>
+                    {% for a in s.accounts.all %}
+                        <li>
+                            <a href="#">{{ a.last_name }}  {{ a.first_name }}  {{ a.middle_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ol>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+<div class="account-info">
+Здесь выводится инфа по выпускникам
+</div>
+
+
+
+
+{% endblock %}

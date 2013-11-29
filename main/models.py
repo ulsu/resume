@@ -20,7 +20,7 @@ class Account(models.Model):
     date = models.DateField(verbose_name='Дата рождения', blank=True, null=True)
     education = models.ForeignKey('Education', verbose_name='Уровень образования', blank=True, null=True)
     faculty = models.ForeignKey('Faculty', verbose_name='Название факультета', blank=True, null=True)
-    speciality = models.ForeignKey('Speciality', verbose_name='Название специальности', blank=True, null=True)
+    speciality = models.ForeignKey('Speciality', verbose_name='Название специальности', blank=True, null=True, related_name='accounts')
     date_of_receipt = models.DateField(verbose_name='Дата поступления', blank=True, null=True)
     expiration_date = models.DateField(verbose_name='Дата окончания', blank=True, null=True)
     other_information = models.TextField(verbose_name='Прочие сведения', blank=True, null=True)

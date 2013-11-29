@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="register-form">
+    <div class="login-form">
         <h1>Пожалуйста, пройдите регистрацию</h1>
-        <div class="form">
-            <form action="/accounts/register/" method="POST">
-                {% csrf_token %}
-                <div class="row">
+        <form  class="form-horizontal" action="/accounts/register/" method="POST">
+            {% csrf_token %}
+            <div class="control-group">
+                <label class="control-label" for="inputEmail">Email</label>
+                <div class="controls">
                     {{ form.username }}
                 </div>
-                <div class="row">
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputPassword">Password</label>
+                <div class="controls">
                     {{ form.password }}
                 </div>
-                <div class="row buttons">
-                    <input type="submit" value="Зарегистрироваться">
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn">Зарегистрироваться</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
 {% endblock %}
