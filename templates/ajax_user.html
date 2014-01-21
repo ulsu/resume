@@ -1,0 +1,19 @@
+<div style="width: 85px; height: 113px; float: right;"><img src="{{ MEDIA_URL }}{{ a.photo }}"></div>
+<h1 style="margin-bottom: 20px; color: #c97777;">{{ a.last_name }} {{ a.first_name }} {{ a.middle_name }}</h1>
+<ul>
+
+
+
+    {% if a.education %} <li><h4>Уровень образования:</h4>{{ a.education }}</li>{% endif %}
+    {% if a.additional_education %} <li><h4>Дополнительное образование:</h4>{{ a.additional_education }}</li>{% endif %}
+    {% if a.scope %} <li><h4>Предпочтительная сфера деятельности:</h4>{{ a.scope }}</li>{% endif %}
+
+    {% if a.experience %} <li><h4>Опыт работы:</h4>{{ a.experience }}</li>{% endif %}
+    {% if a.skills %} <li><h4>Навыки:</h4>{{ a.skills }}</li>{% endif %}
+    {% if a.languages %} <li><h4>Знание языков:</h4>{{ a.languages }}</li>{% endif %}
+    {% if a.quality %} <li><h4>Личные качества:</h4>{{ a.quality }}</li>{% endif %}
+    <li><h4>Личные данные:</h4>Дата рождения: {{ a.date }} {{ a.personal_data }}</li>
+    {% if a.education %} <li><h4>Адрес:</h4>{{ a.address }}</li>{% endif %}
+    {% if a.education %} <li><h4>Телефон:</h4>{{ a.phone }}</li>{% endif %}
+    {% if a.education %} <li><h4>Email:</h4>{{ a.mail }}</li>{% endif %}
+</ul>

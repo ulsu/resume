@@ -48,26 +48,22 @@
 
 
 {% block information %}
-<div class="account-list">
-    <ul>
-        {% for s in speciality %}
-            <li>
-                {{ s.name }}
-                <ol>
-                    {% for a in s.accounts.all %}
-                        {% if a.approve %}
-                            <li>
-                                <a href="#" class="user" id="{{ a.id }}">{{ a.last_name }}  {{ a.first_name }}  {{ a.middle_name }}</a>
-                            </li>
-                        {% endif %}
-                    {% endfor %}
-                </ol>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
-<div class="account-info">
-</div>
+    <div class="account-list">
+        Поиск по запросу '{{ query }}'
+        {% if not account %}<br />Поиск не дал результатов{% endif %}
+        {{ generic_query }}
+                    <ol>
+                        {% for a in account %}
+                            {% if a.approve %}
+                                <li>
+                                    <a href="#" class="user" id="{{ a.id }}">{{ a.last_name }}  {{ a.first_name }}  {{ a.middle_name }}</a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ol>
+    </div>
+    <div class="account-info">
+    </div>
 
 
 

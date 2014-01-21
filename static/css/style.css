@@ -35,7 +35,7 @@ body {
  -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 .container {
-    width: 1250px;
+    width: 1235px;
     padding: 0 14px;
 }
 .container .credit {
@@ -134,6 +134,7 @@ body {
 .faculties {
     float: left;
     width: 288px;
+    display: table-cell;
 }
 .faculties a {
     display: block;
@@ -163,6 +164,13 @@ body {
 .row input, textarea, .uneditable-input {
     width: 400px;
 }
+.row input[type="checkbox"]{
+    width: 40px;
+    margin: 0;
+}
+.row textarea {
+    height: 100px;
+}
 .row {
     margin-left: 20px;
 }
@@ -172,9 +180,11 @@ body {
 
 /*INFO block*/
 .info {
-    float: left;
-    padding: 0 30px;
-    width: 896px;
+    /*float: left;*/
+    padding-left: 30px;
+    padding-right: 30px;
+    /*width: 917px;*/
+    display: table-cell;
 }
 .info p {
     margin-bottom: 6px;
@@ -235,8 +245,23 @@ body {
 
 .account-info {
     float: left;
-    width: 448px ;
+    width: 384px;
+    padding-left: 55px;
 }
+.account-info ul{
+    margin: 0;
+    list-style-type: none;
+}
+.account-info ul li {
+    margin-bottom: 10px;
+}
+.account-info h4{
+     color: #2575C2;
+     font-size: 16px;
+     margin: 0px 0;
+    font-weight: normal;
+
+ }
 
 
 /*FORM-authorization*/
@@ -251,3 +276,4 @@ body {
     color: #2575c2;
     font-size: 21.5px;
 }
+

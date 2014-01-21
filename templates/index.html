@@ -2,54 +2,51 @@
 
 {% block menu %}
     <ul class="nav nav-tabs">
-        {% if a.name == "main" %}
-            <li class="active"><a href="/">Главная</a></li>
-            <li><a href="/about/">Об УлГУ</a></li>
-            <li><a href="/contacts/">Контакты</a></li>
-        {% elif a.name == "about" %}
-            <li><a href="/">Главная</a></li>
-            <li class="active"><a href="/about/">Об УлГУ</a></li>
-            <li><a href="/contacts/">Контакты</a></li>
-        {% elif a.name == "contacts"%}
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about/">Об УлГУ</a></li>
-            <li class="active"><a href="/contacts/">Контакты</a></li>
+        {% if a.slug == "main" %}
+            <li class="active"><a href="/{{ year }}/">Главная</a></li>
+            <li><a href="/{{ year }}/about/">Об УлГУ</a></li>
+            <li><a href="/{{ year }}/contacts/">Контакты</a></li>
+        {% elif a.slug == "about" %}
+            <li><a href="/{{ year }}/">Главная</a></li>
+            <li class="active"><a href="/{{ year }}/about/">Об УлГУ</a></li>
+            <li><a href="/{{ year }}/contacts/">Контакты</a></li>
+        {% elif a.slug == "contacts"%}
+            <li><a href="/{{ year }}/">Главная</a></li>
+            <li><a href="/{{ year }}/about/">Об УлГУ</a></li>
+            <li class="active"><a href="/{{ year }}/contacts/">Контакты</a></li>
         {% else %}
-            <li><a href="/">Главная</a></li>
-            <li><a href="/about/">Об УлГУ</a></li>
-            <li><a href="/contacts/">Контакты</a></li>
+            <li><a href="/{{ year }}/">Главная</a></li>
+            <li><a href="/{{ year }}/about/">Об УлГУ</a></li>
+            <li><a href="/{{ year }}/contacts/">Контакты</a></li>
         {% endif %}
     </ul>
 {% endblock %}
 
-
-{% block faculties %}
-                <ul>
-                    <a href="/appeal/">Обращение к выпускникам</a>
-                    {% for i in institutes %}
-                        <a href="#">
-                            {{ i.name }}
-                        </a>
-                        <li>
+    {% block faculties %}
+        {% if a.slug == "about" or a.slug == "contacts" or a.slug == "appeal" %}
+        {% else %}
+            <ul>
+                <a href="/{{ year }}/appeal/">Обращение к выпускникам</a>
+                {% for i in institutes %}
+                    <a href="#">
+                        {{ i.name }}
+                    </a>
+                    <li>
                         <ul>
                             {% for f in i.faculties.all %}
-                            <li>
-                                <a href="/faculty/{{ f.id }}">{{ f.name }}</a>
-                            </li>
+                                <li>
+                                    <a href="/{{ year }}/faculty/{{ f.id }}/">{{ f.name }}</a>
+                                </li>
                             {% endfor %}
                         </ul>
                     </li>
-                    {% endfor %}
-                    {% for f in faculties %}
-                        <a href="/faculty/{{ f.id }}">{{ f.name }}</a>
-                    {% endfor %}
-                </ul>
-
-
-                <p style=" color: #865A57; font-weight: 900;">Поиск по ФИО</p>
-                <form onsubmit="search(); return false;"><input type="text" name="query" id="search_query"><input type="button" value="Найти" name="search_it" onclick="search();"></form>
-  <img width="1" height="1" alt="" src="/images/0.gif">
-{% endblock %}
+                {% endfor %}
+                {% for f in faculties %}
+                    <a href="/{{ year }}/faculty/{{ f.id }}">{{ f.name }}</a>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endblock %}
 
 {% block information %}
     {{ a.content|safe }}
